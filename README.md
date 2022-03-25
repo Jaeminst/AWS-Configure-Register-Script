@@ -41,7 +41,9 @@ ___
 2. 부모 bash안에 func. 함수를 삽입하여 자식 bash를 source로 불러오게 하였다.
 
 ![](https://images.velog.io/images/jm1225/post/521cc8b8-9024-41d6-b8e2-bfa566174d88/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202022-03-23%2011-27-17.png)
+
 ![](https://images.velog.io/images/jm1225/post/1656d5a3-d9ba-477a-9218-3f8e523f6642/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202022-03-23%2011-27-46.png)
+
 ![](https://images.velog.io/images/jm1225/post/e55ae832-f1f9-4e7c-9059-c03e296af70a/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7,%202022-03-23%2011-28-15.png)
 
 
