@@ -8,7 +8,7 @@ PS3='Please Select one: '
 
 printf "\n"
 printf "[Select Region]\n"
-select select_region in "미국 동부 (버지니아 북부) us-east-1" "아시아 태평양 (서울) ap-northeast-2" "User input Region"
+select select_region in "미국 동부 (버지니아 북부) us-east-1" "아시아 태평양 (서울) ap-northeast-2" "미국 서부 (오레곤) us-west-2" "User input Region"
 do
   case $select_region in
   "미국 동부 (버지니아 북부) us-east-1")
@@ -16,6 +16,9 @@ do
        break;;
   "아시아 태평양 (서울) ap-northeast-2")
        select_region="ap-northeast-2"
+       break;;
+  "미국 서부 (오레곤) us-west-2")
+       select_region="us-west-2"
        break;;
   "User input Region")
        read -p ": " read_region
@@ -29,21 +32,28 @@ do
 done
 
 ## Profile 검사 통과 if문 작성할 것
-## 필요 없음 aws configure --profile $user_name
+## 없을 시 aws configure --profile <<EOF
+# $user_name
+# $access_key_init
+# $secret_key_init
+# $select_region
+# json
+# EOF
 ## 패키지 없음 ecs-cli configure profile default --profile-name $user_name
 
 
 printf "\ninstall: aws configure --profile <Your Name>\n\n"
 
-aws configure set default.region $select_region
+## unset AWS_DEFAULT_PROFILE
+## export AWS_DEFAULT_PROFILE=$user_name
 ## aws configure set region $select_region --profile default
+aws configure set default.region $select_region
+
+unset AWS_PROFILE
+export AWS_PROFILE=$user_name
 aws configure set region $select_region --profile $user_name
 
 ## Profile 검사 통과
-unset AWS_PROFILE
-export AWS_PROFILE=$user_name
-## unset AWS_DEFAULT_PROFILE
-## export AWS_DEFAULT_PROFILE=$user_name
 printf "AWS-login: $user_name\n region: $(aws configure get region --profile $user_name)\n$(aws iam get-login-profile --user-name $user_name)\n\n"
 
 printf "[Selection Profile] \n$(aws configure list)\n\n"
@@ -56,7 +66,9 @@ printf "[Selection Profile] \n$(aws configure list)\n\n"
 ## Key 검사 통과 if문 작성할 것, pass 유무 체크 후 export 다르게 할 것
 unset AWS_ACCESS_KEY_ID
 unset AWS_SECRET_ACCESS_KEY
+unset AWS_DEFAULT_REGION
 export AWS_ACCESS_KEY_ID=$(pass aws/$user_name/aws-access-key-id)
 export AWS_SECRET_ACCESS_KEY=$(pass aws/$user_name/aws-secret-access-key)
+export AWS_DEFAULT_REGION=$select_region
 echo "Succeses read Keys"
 #EOF
