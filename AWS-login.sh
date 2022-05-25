@@ -42,21 +42,20 @@ done
 ## 패키지 없음 ecs-cli configure profile default --profile-name $user_name
 
 
-printf "\ninstall: aws configure --profile <Your Name>\n\n"
+printf "\ninstall: aws configure --profile <Your Name>\n"
 
 ## unset AWS_DEFAULT_PROFILE
 ## export AWS_DEFAULT_PROFILE=$user_name
 ## aws configure set region $select_region --profile default
 aws configure set default.region $select_region
+printf "Set Default Region Success\n"
 
 unset AWS_PROFILE
 export AWS_PROFILE=$user_name
 aws configure set region $select_region --profile $user_name
+printf "Set Profile Region Success\n"
 
 ## Profile 검사 통과
-printf "AWS-login: $user_name\n region: $(aws configure get region --profile $user_name)\n$(aws iam get-login-profile --user-name $user_name)\n\n"
-
-printf "[Selection Profile] \n$(aws configure list)\n\n"
 
 ## pass에 등록안되어 있으면 설치 확인 및 설치 의사 select문 작성할 것
 ## pass 확인 후 엑세스 키, 시크릿 키 입력 받는 if문 작성할 것
@@ -70,5 +69,9 @@ unset AWS_DEFAULT_REGION
 export AWS_ACCESS_KEY_ID=$(pass aws/$user_name/aws-access-key-id)
 export AWS_SECRET_ACCESS_KEY=$(pass aws/$user_name/aws-secret-access-key)
 export AWS_DEFAULT_REGION=$select_region
-echo "Succeses read Keys"
+printf "Set export env Success\n\n"
+
+printf "AWS-login: $user_name\n region: $(aws configure get region --profile $user_name)\n$(aws iam get-login-profile --user-name $user_name)\n\n"
+
+printf "[Selection Profile] \n$(aws configure list)\n\n"
 #EOF
