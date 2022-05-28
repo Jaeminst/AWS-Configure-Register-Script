@@ -2,7 +2,8 @@
 
 ## 명령어 한개로 프로필과 리전 설정을 한 번에 할 수 있다.
 
-- OS : Linux Ubuntu, MacOS
+- OS : Linux Ubuntu
+- (MacOS에서 테스트 못해봐서 안돼면 이슈 남겨주세요)
 - 사전 설치 패키지 : `pass`
 
 # Install
