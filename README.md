@@ -110,8 +110,8 @@ $ source ~/.bashrc
 ```sh
 $ git clone git@github.com:Jaeminst/AWS-Configure-Register-Script.git
 $ cd ./AWS-Configure-Register-Script
-$ sudo chmod +x AWS-login.sh
-$ sudo cp AWS-login.sh /usr/bin/aws-login
+$ printf "\naws-login() {\n source $(pwd)/AWS-login.sh\n}" >> ~/.zshrc
+$ source ~/.zshrc
 ```
 
 ## 사용화면
