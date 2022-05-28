@@ -97,12 +97,19 @@ aws configure --profile jaemin
 ```
 ![스크린샷, 2022-05-28 23-22-46](https://user-images.githubusercontent.com/99124279/170829518-905ceb03-31d4-4a99-a10e-b0797c6777de.png)
 
-## Command 등록
+## Command 등록 (Ubuntu)
 ```sh
 $ git clone git@github.com:Jaeminst/AWS-Configure-Register-Script.git
 $ cd ./AWS-Configure-Register-Script
 $ printf "\naws-login() {\n source $(pwd)/AWS-login.sh\n}" >> ~/.bashrc
 $ source ~/.bashrc
+```
+
+## Command 등록 (MacOS)
+```sh
+$ git clone git@github.com:Jaeminst/AWS-Configure-Register-Script.git
+$ cd ./AWS-Configure-Register-Script
+$ sudo cp AWS-login.sh /usr/bin/aws-login
 ```
 
 ## 사용화면
