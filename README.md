@@ -109,6 +109,7 @@ $ source ~/.bashrc
 ```sh
 $ git clone git@github.com:Jaeminst/AWS-Configure-Register-Script.git
 $ cd ./AWS-Configure-Register-Script
+$ sudo chmod +x AWS-login.sh
 $ sudo cp AWS-login.sh /usr/bin/aws-login
 ```
 
